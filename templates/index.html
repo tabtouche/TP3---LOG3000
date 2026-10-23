@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Page principale, rendue par app.py. La variable result contient le resultat du dernier calcul. -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -10,8 +11,11 @@
 <div class="calculator">
    <h1>Flask Calculator</h1>
    <form method="POST">
+      <!-- readonly pour que l'expression soit construite seulement avec les boutons.
+           Le nom "display" est celui lu par app.py -->
       <input type="text" name="display" id="display" value="{{ result }}" readonly>
 
+      <!-- type="button" pour ne pas soumettre le formulaire, sauf pour le bouton = -->
       <div class="buttons">
          <button type="button" class="btn" onclick="appendToDisplay('1')">1</button>
          <button type="button" class="btn" onclick="appendToDisplay('2')">02</button>
@@ -37,11 +41,13 @@
 </div>
 
 <script>
+   // Ajoute value (chiffre ou operateur) a la fin de l'ecran. Ne retourne rien.
    function appendToDisplay(value) {
       const display = document.getElementById('display');
       display.value += value;
    }
 
+   // Vide l'ecran. Ne retourne rien.
    function clearDisplay() {
       document.getElementById('display').value = '';
    }
