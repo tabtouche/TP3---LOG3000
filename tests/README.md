@@ -35,6 +35,18 @@ Il faut lancer la commande depuis la racine et avec `python -m pytest`, sinon le
 
 ## Suivi des correctifs
 
+### #4 : libellés des boutons (branche `fix/4-libelles-boutons`)
+
+- **Problème** : dans `index.html`, les boutons 2 et 8 affichaient `02` et `88`, et les boutons `*` et `/` étaient vides.
+- **Correctif** : chaque bouton affiche maintenant le caractère qu'il ajoute.
+- **Test qui échouait** : `test_app.py::test_button_labels_match_values`.
+- **Résultat sur la branche** : le test passe.
+
+```bash
+python -m pytest tests/test_app.py::test_button_labels_match_values
+# 1 passed
+```
+
 ### #3 : division entière (branche `fix/3-division-entiere`)
 
 - **Problème** : `divide` utilisait `//`, donc `7/2` donnait `3` au lieu de `3.5`.
