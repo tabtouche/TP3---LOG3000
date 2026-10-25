@@ -46,3 +46,15 @@ Il faut lancer la commande depuis la racine et avec `python -m pytest`, sinon le
 python -m pytest tests/test_app.py::test_button_labels_match_values
 # 1 passed
 ```
+
+### #3 : division entière (branche `fix/3-division-entiere`)
+
+- **Problème** : `divide` utilisait `//`, donc `7/2` donnait `3` au lieu de `3.5`.
+- **Correctif** : remplacé par `/`.
+- **Tests qui échouaient** : `test_operators.py::test_divide` et `test_calculate.py::test_valid_expressions[7/2-3.5]`.
+- **Résultat sur la branche** : les deux tests passent.
+
+```bash
+python -m pytest tests/test_operators.py::test_divide "tests/test_calculate.py::test_valid_expressions[7/2-3.5]"
+# 2 passed
+```
