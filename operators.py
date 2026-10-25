@@ -15,7 +15,7 @@ def subtract(a,b):
 
     Entrees : a, b (float). Sortie : float.
     """
-    return b - a
+    return a - b
 
 def multiply(a,b):
     """Retourne le produit a * b.
