@@ -43,6 +43,17 @@ Il faut lancer la commande depuis la racine et avec `python -m pytest`, sinon le
 - **Résultat attendu sur la branche** : les deux tests passent après correction.
 
 `python -m pytest tests/test_operators.py::test_multiply "tests/test_calculate.py::test_valid_expressions[6*7-42.0]" # 2 passed (si les deux tests réussissent)`
+### #1 : erreur de soustraction (branche `fix/1-subtraction`)
+
+- **Problème** : `subtract` inversait les opérandes en utilisant `b - a`, donc `9 - 4` donnait `-5` au lieu de `5`.
+- **Correctif** : remplacé `return b - a` par `return a - b`.
+- **Tests qui échouaient** : `test_operators.py::test_subtract` et `test_calculate.py::test_valid_expressions[9-4-5.0]`.
+- **Résultat attendu sur la branche** : les deux tests passent après correction.
+
+```bash
+python -m pytest tests/test_operators.py::test_subtract "tests/test_calculate.py::test_valid_expressions[9-4-5.0]"
+# 2 passed (si les deux tests réussissent)
+```
 
 ### #4 : libellés des boutons (branche `fix/4-libelles-boutons`)
 
