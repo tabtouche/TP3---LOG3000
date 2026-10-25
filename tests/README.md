@@ -32,3 +32,29 @@ Il faut lancer la commande depuis la racine et avec `python -m pytest`, sinon le
 
 - pytest et Flask. Le serveur n'a pas besoin d'être lancé, car `test_app.py` utilise `app.test_client()`.
 - Les tests vérifient le comportement attendu décrit dans les docstrings et le README principal, pas le comportement actuel du code. Un test qui échoue indique donc un bogue.
+
+## Suivi des correctifs
+
+### #1 : erreur de soustraction (branche `fix/1-subtraction`)
+
+- **Problème** : `subtract` inversait les opérandes en utilisant `b - a`, donc `9 - 4` donnait `-5` au lieu de `5`.
+- **Correctif** : remplacé `return b - a` par `return a - b`.
+- **Tests qui échouaient** : `test_operators.py::test_subtract` et `test_calculate.py::test_valid_expressions[9-4-5.0]`.
+- **Résultat attendu sur la branche** : les deux tests passent après correction.
+
+```bash
+python -m pytest tests/test_operators.py::test_subtract "tests/test_calculate.py::test_valid_expressions[9-4-5.0]"
+# 2 passed (si les deux tests réussissent)
+```
+
+### #3 : division entière (branche `fix/3-division-entiere`)
+
+- **Problème** : `divide` utilisait `//`, donc `7/2` donnait `3` au lieu de `3.5`.
+- **Correctif** : remplacé par `/`.
+- **Tests qui échouaient** : `test_operators.py::test_divide` et `test_calculate.py::test_valid_expressions[7/2-3.5]`.
+- **Résultat sur la branche** : les deux tests passent.
+
+```bash
+python -m pytest tests/test_operators.py::test_divide "tests/test_calculate.py::test_valid_expressions[7/2-3.5]"
+# 2 passed
+```

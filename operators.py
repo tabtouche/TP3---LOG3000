@@ -30,4 +30,4 @@ def divide(a,b):
     Entrees : a, b (float). Sortie : float.
     Leve ZeroDivisionError si b vaut 0.
     """
-    return a // b
+    return a / b
