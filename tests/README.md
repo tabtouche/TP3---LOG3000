@@ -32,3 +32,17 @@ Il faut lancer la commande depuis la racine et avec `python -m pytest`, sinon le
 
 - pytest et Flask. Le serveur n'a pas besoin d'être lancé, car `test_app.py` utilise `app.test_client()`.
 - Les tests vérifient le comportement attendu décrit dans les docstrings et le README principal, pas le comportement actuel du code. Un test qui échoue indique donc un bogue.
+
+## Suivi des correctifs
+
+### #4 : libellés des boutons (branche `fix/4-libelles-boutons`)
+
+- **Problème** : dans `index.html`, les boutons 2 et 8 affichaient `02` et `88`, et les boutons `*` et `/` étaient vides.
+- **Correctif** : chaque bouton affiche maintenant le caractère qu'il ajoute.
+- **Test qui échouait** : `test_app.py::test_button_labels_match_values`.
+- **Résultat sur la branche** : le test passe.
+
+```bash
+python -m pytest tests/test_app.py::test_button_labels_match_values
+# 1 passed
+```
