@@ -22,7 +22,7 @@ def multiply(a,b):
 
     Entrees : a, b (float). Sortie : float.
     """
-    return a ** b
+    return a * b
 
 def divide(a,b):
     """Retourne le quotient a / b.

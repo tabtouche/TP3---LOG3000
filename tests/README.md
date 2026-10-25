@@ -35,6 +35,14 @@ Il faut lancer la commande depuis la racine et avec `python -m pytest`, sinon le
 
 ## Suivi des correctifs
 
+### #2 : erreur de multiplication (branche `fix/2-corriger-multiplication`)
+
+- **Problème** : `multiply` calculait une puissance en utilisant `a ** b`, donc `6 * 7` donnait `279936.0` au lieu de `42.0`.
+- **Correctif** : remplacé `return a ** b` par `return a * b`.
+- **Tests qui échouaient** : `test_operators.py::test_multiply` et `test_calculate.py::test_valid_expressions[6*7-42.0]`.
+- **Résultat attendu sur la branche** : les deux tests passent après correction.
+
+`python -m pytest tests/test_operators.py::test_multiply "tests/test_calculate.py::test_valid_expressions[6*7-42.0]" # 2 passed (si les deux tests réussissent)`
 ### #1 : erreur de soustraction (branche `fix/1-subtraction`)
 
 - **Problème** : `subtract` inversait les opérandes en utilisant `b - a`, donc `9 - 4` donnait `-5` au lieu de `5`.
